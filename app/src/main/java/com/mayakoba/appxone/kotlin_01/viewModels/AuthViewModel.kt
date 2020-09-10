@@ -1,9 +1,7 @@
 package com.mayakoba.appxone.kotlin_01.viewModels
 
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
+import com.mayakoba.appxone.kotlin_01.data.repository.UserRepository
 import com.mayakoba.appxone.kotlin_01.ui.interfaces.AuthListener
 
  class AuthViewModel : ViewModel(){
@@ -15,11 +13,12 @@ import com.mayakoba.appxone.kotlin_01.ui.interfaces.AuthListener
 
        authListener?.onStarted()
         if(email.isNullOrEmpty() || password.isNullOrEmpty()){
-         //   authListener.onSuccess()
+
+            authListener?.onFailure("Invalid Email or Password")
         }
         else{
-           // authListener.onSuccess()
-
+             val loginResponse = UserRepository().userLogin(email,password)
+            authListener?.onSuccess(loginResponse)
         }
 
             // success

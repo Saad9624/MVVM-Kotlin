@@ -2,12 +2,9 @@ package com.mayakoba.appxone.kotlin_01.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.LiveData
 import com.mayakoba.appxone.kotlin_01.R
-import com.mayakoba.appxone.kotlin_01.databinding.ActivityMainBinding
 import com.mayakoba.appxone.kotlin_01.ui.interfaces.AuthListener
-import com.mayakoba.appxone.kotlin_01.viewModels.AuthViewModel
 
 class MainActivity : AppCompatActivity() , AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +21,7 @@ class MainActivity : AppCompatActivity() , AuthListener {
     override fun onStarted() {
     }
 
-    override fun onSuccess() {
+    override fun onSuccess(loginResponse: LiveData<String>) {
     }
 
     override fun onFailure(message: String) {
