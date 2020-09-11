@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import com.mayakoba.appxone.kotlin_01.R
 import com.mayakoba.appxone.kotlin_01.ui.interfaces.AuthListener
 
-class MainActivity : AppCompatActivity() , AuthListener {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,13 +17,5 @@ class MainActivity : AppCompatActivity() , AuthListener {
 //        binding.viewmodel = viewModel
 //        viewModel.authListener = this
     }
-
-    override fun onStarted() {
-    }
-
-    override fun onSuccess(loginResponse: LiveData<String>) {
-    }
-
-    override fun onFailure(message: String) {
-    }
+    
 }
