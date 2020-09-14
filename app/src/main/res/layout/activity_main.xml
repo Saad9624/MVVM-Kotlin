@@ -5,11 +5,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.mayakoba.appxone.kotlin_01.viewModels.AuthViewModel" />
+    </data>
+
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root_layout1"
+
         android:layout_width="match_parent"
         android:background="#E2E2E2"
         android:layout_height="match_parent"
-        tools:context=".ui.auth.SignupActivity">
+        tools:context=".views.auth.SignupActivity">
 
 
         <RelativeLayout
@@ -35,7 +45,7 @@
 
                 <TextView
                     android:layout_gravity="center_horizontal"
-                    android:text="architect your app with"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" app:fontFamily="cursive"
@@ -144,7 +154,7 @@
 
         <ProgressBar
             android:visibility="invisible"
-            android:id="@+id/progress_bar"
+            android:id="@+id/progress_bar1"
             android:layout_gravity="center_horizontal|center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

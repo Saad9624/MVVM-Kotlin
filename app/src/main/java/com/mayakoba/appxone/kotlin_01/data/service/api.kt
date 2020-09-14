@@ -13,16 +13,29 @@ import retrofit2.http.POST
 
 interface Api {
 
+    /**
+     * SUSPEND
+     * Suspending function are the center of whole coroutines
+     * A Suspending is a simple function that can be pause or resume at later time
+     * this type of function can execute long running operations and wait for it to comoplete without blocking
+     */
+
+
+
     @FormUrlEncoded
     @POST("login")
-    //Suspend*
-    //Suspending function are the center of whole coroutines
-    //A Suspending is a simple function that can be pause or resume at later time
-    //this type of function can execute long running operations and wait for it to comoplete without blocking
    suspend fun userLogin(
         @Field ("email") email:String,
         @Field("password") password:String
     ) : Response<AuthResponse>
+
+    @FormUrlEncoded
+    @POST("signup")
+    suspend fun userSignup(
+        @Field("name") name:String,
+        @Field("email" )email: String,
+        @Field("password")password: String
+    ):Response<AuthResponse>
 
     companion object{
         operator fun invoke(

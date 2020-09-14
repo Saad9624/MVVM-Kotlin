@@ -5,7 +5,9 @@ import com.mayakoba.appxone.kotlin_01.data.db.AppDatabase
 import com.mayakoba.appxone.kotlin_01.data.repository.UserRepository
 import com.mayakoba.appxone.kotlin_01.data.service.Api
 import com.mayakoba.appxone.kotlin_01.data.service.NetworkConnectionInterceptor
-import com.mayakoba.appxone.kotlin_01.ui.auth.AuthViewModelFactory
+import com.mayakoba.appxone.kotlin_01.views.auth.AuthViewModelFactory
+import com.mayakoba.appxone.kotlin_01.views.auth.ProfileModelFactory
+import com.mayakoba.appxone.kotlin_01.views.auth.fragments.ProfileViewModel
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -48,6 +50,8 @@ class MVVMApplication : Application() , KodeinAware {
         bind() from singleton { AppDatabase(instance())  }
         bind() from singleton { UserRepository(instance(),instance()) }
         bind() from provider { AuthViewModelFactory(instance())}
+        bind() from provider { ProfileModelFactory(instance())}
+
     }
 
 }

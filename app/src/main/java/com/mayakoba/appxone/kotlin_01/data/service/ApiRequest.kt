@@ -7,7 +7,11 @@ import retrofit2.Response
 
 abstract class ApiRequest {
 
-    //for Aysnc task we use Suspend
+    /**
+     * For Async task we use SUSPEND function
+     * it can be pause and resume at later time
+     */
+
     suspend fun<T:Any> apiRequest(call: suspend() -> Response<T>) : T {
         val response = call.invoke()
 

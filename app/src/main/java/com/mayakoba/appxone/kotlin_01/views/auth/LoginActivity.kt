@@ -1,4 +1,4 @@
-package com.mayakoba.appxone.kotlin_01.ui.auth
+package com.mayakoba.appxone.kotlin_01.views.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.mayakoba.appxone.kotlin_01.R
 import com.mayakoba.appxone.kotlin_01.data.db.entities.User
 import com.mayakoba.appxone.kotlin_01.databinding.ActivityLoginBinding
-import com.mayakoba.appxone.kotlin_01.ui.interfaces.AuthListener
+import com.mayakoba.appxone.kotlin_01.views.interfaces.AuthListener
 import com.mayakoba.appxone.kotlin_01.utils.Toast
 import com.mayakoba.appxone.kotlin_01.utils.hide
 import com.mayakoba.appxone.kotlin_01.utils.show
@@ -79,6 +79,13 @@ class LoginActivity : AppCompatActivity(),AuthListener , KodeinAware {
            // Toast("btutton clicked")
             loginClick()
         }
+
+        text_view_sign_up.setOnClickListener{
+                                    Intent(this,HomeActivity::class.java).also{
+                            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(it)
+                        }
+        }
     }
 
     override fun onStarted() {
@@ -91,11 +98,15 @@ class LoginActivity : AppCompatActivity(),AuthListener , KodeinAware {
     override fun onSuccess(user: User) {
         progress_bar.hide()
         root_layout.snackbar("${user.name} is Logged In")
+        Intent(this,HomeActivity::class.java).also{
+            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(it)
+        }
 //        loginResponse.observe(this, Observer {
-//           progress_bar.hide()
-//            Toast(it)
-//
-//        })
+////           progress_bar.hide()
+////            Toast(it)
+////
+////        })
     }
 
     override fun onFailure(message: String) {
@@ -105,9 +116,9 @@ class LoginActivity : AppCompatActivity(),AuthListener , KodeinAware {
 
     }
 
-    fun login(){
-         viewModel.login("","")
-    }
+//    fun login(){
+//         viewModel.login("","")
+//    }
 
     fun loginClick(){
         //Toast("Login clicked")

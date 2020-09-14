@@ -1,6 +1,5 @@
-package com.mayakoba.appxone.kotlin_01.ui.interfaces
+package com.mayakoba.appxone.kotlin_01.views.interfaces
 
-import androidx.lifecycle.LiveData
 import com.mayakoba.appxone.kotlin_01.data.db.entities.User
 
 interface AuthListener {
