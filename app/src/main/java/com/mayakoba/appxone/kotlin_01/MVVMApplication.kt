@@ -2,9 +2,12 @@ package com.mayakoba.appxone.kotlin_01
 
 import android.app.Application
 import com.mayakoba.appxone.kotlin_01.data.db.AppDatabase
+import com.mayakoba.appxone.kotlin_01.data.preferences.PreferenceProvider
+import com.mayakoba.appxone.kotlin_01.data.repository.QuoteRepository
 import com.mayakoba.appxone.kotlin_01.data.repository.UserRepository
 import com.mayakoba.appxone.kotlin_01.data.service.Api
 import com.mayakoba.appxone.kotlin_01.data.service.NetworkConnectionInterceptor
+import com.mayakoba.appxone.kotlin_01.viewModels.viewModelFactory.QuotesViewModelFactory
 import com.mayakoba.appxone.kotlin_01.views.auth.AuthViewModelFactory
 import com.mayakoba.appxone.kotlin_01.views.auth.ProfileModelFactory
 import com.mayakoba.appxone.kotlin_01.views.auth.fragments.ProfileViewModel
@@ -48,10 +51,12 @@ class MVVMApplication : Application() , KodeinAware {
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { Api(instance()) }
         bind() from singleton { AppDatabase(instance())  }
+        bind() from singleton {PreferenceProvider(instance())}
         bind() from singleton { UserRepository(instance(),instance()) }
         bind() from provider { AuthViewModelFactory(instance())}
         bind() from provider { ProfileModelFactory(instance())}
-
+        bind() from provider { QuoteRepository(instance(),instance() ,instance() )}
+        bind() from provider { QuotesViewModelFactory(instance( )) }
     }
 
 }
